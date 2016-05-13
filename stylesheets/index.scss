@@ -1,0 +1,39 @@
+$radius: 5px;
+
+li {
+  padding: 0 $radius;
+}
+.administration {
+  font-size: 2em;
+}
+.search-input {
+  display:inline;
+  width: 300px;
+  border-radius: $radius;
+}
+.table {
+  margin: $radius;
+  padding: $radius;
+  border: 1px solid black;
+  border-radius: $radius;
+}
+.row {
+  max-width: 100%;
+}
+.black {
+  background-color: black;
+  padding: 5px;
+  color: white;
+  border-radius: $radius;
+}
+.add-user {
+  border-radius: $radius;
+  width: 100%;
+  font-weight: bold;
+}
+strong  {
+  input {
+    background-color: none;
+    border: none;
+  }
+}
