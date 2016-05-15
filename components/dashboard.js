@@ -9,8 +9,8 @@ class Dashboard extends React.Component {
   render() {
     var tableRow = (user) => {
       return (
-        <tr key={user.id} onClick={()=>this.props.onUserClick(user.id)}>
-          <td><input type='radio'/></td>
+        <tr key={user.id} className={classnames({active: user.id === visibleUser.id})} onClick={()=>this.props.onUserClick(user.id)}>
+          <td><input type='checkbox'/></td>
           <td>Mr</td>
           <td>{user.lastname} {user.firstname}</td>
           <td>{user.function}</td>
@@ -20,19 +20,18 @@ class Dashboard extends React.Component {
         </tr>
       )
     }
-    const visibleUser = this.props.users.filter(user => user.id === this.props.visibleUser)[0];
-    console.log(visibleUser.id);
+    const visibleUser = this.props.users.filter(user => user.id === this.props.visibleUser)[0] || {};
     return (
       <div className='dashboard row'>
         <div className='small-10 columns'>
           <div className='table'>
             <div>
-              <span className='administration'>Administration</span> <input className='search-input' type='search' placeholder='rechercher'/>
+              <h3><i className='fi-widget'/><span> Administration</span></h3>
             </div>
             <table>
               <thead>
                 <tr>
-                  <th><input type='radio'/></th>
+                  <th><input type='checkbox'/></th>
                   <th>Civilité</th>
                   <th>Nom / Prenom</th>
                   <th>Fonction</th>
@@ -48,15 +47,15 @@ class Dashboard extends React.Component {
           </div>
         </div>
         <div className='small-2 columns' style={{padding: "5px 0 0 5px"}}>
-          <a className="button add-user">Ajouter un utilisateur</a>
-          <div className={classnames('side-bar', {hidden: this.props.visibleUser})}>
-            <div className={classnames('black', {hidden: this.props.visibleUser})}>
-              Nom Prenom<br/>
-            <strong><input type='text' value={visibleUser.lastname + " " + visibleUser.firstname}/></strong>
+          <a className="expanded button add-user" data-open="exampleModal1"><i className='fi-plus float-left'/> Ajouter un utilisateur</a>
+          <div className={classnames('side-bar', {hide: !this.props.visibleUser})}>
+            <div className='black'>
+              Nom Prenom <i className='fi-x float-right' onClick={this.props.onUnSelectUser}/><br/>
+            <strong><input type='text' value={visibleUser.lastname + " " + visibleUser.firstname} readOnly/></strong>
             </div>
             <div>
               Civilité<br/>
-            <strong><input type='text' value="Monsieur"/></strong>
+            <strong><input type='text' value="Monsieur" readOnly/></strong>
             </div>
             <div>
               Fonction<br/>

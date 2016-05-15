@@ -4,7 +4,7 @@ import {
 import datas from '../data.js';
 
 
-const visibleUser = (state = 0, action) => {
+const visibleUser = (state = 4, action) => {
   switch (action.type) {
     case 'SELECT_USER':
       return action.id;
@@ -18,6 +18,7 @@ const visibleUser = (state = 0, action) => {
 const user = (state, action) => {
   switch (action.type) {
     case 'ADD_USER':
+      console.log('adduser', action);
       return {
         id: Math.random().toString(36).substr(2, 9), //randomly generate an id
         ...action.user

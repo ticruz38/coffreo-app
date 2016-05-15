@@ -1,6 +1,9 @@
-require('foundation-sites/scss/foundation.scss');
+import'./foundation/css/foundation.min.css';
+import './stylesheets/foundation-icons/foundation-icons.scss';
 import './stylesheets/index.scss';
-import 'foundation-sites';
+import './foundation/js/vendor/foundation.min.js';
+//import 'foundation-sites/js/foundation.core.js';
+
 
 import React from 'react';
 import ReactDom from 'react-dom';
@@ -16,3 +19,5 @@ ReactDom.render(
   <Provider store={store}>
     <Home/>
   </Provider>, document.getElementById('app'));
+
+$(document).foundation(); //initialize foundation

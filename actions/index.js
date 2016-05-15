@@ -1,19 +1,19 @@
 export const addUser = (user) => {
   return {
     type: 'ADD_USER',
-    id: Math.random().toString(36).substr(2, 9),
-    ...user
+    user: {
+      ...user
+    }
   }
 }
 
-export const deselectUser = () => {
+export const unSelectUser = () => {
   return {
     type: 'DESELECT_USER'
   }
 }
 
 export const updateUser = (e, id) => {
-  console.log('action', id);
   return {
     type: 'UPDATE_USER',
     id: id,
